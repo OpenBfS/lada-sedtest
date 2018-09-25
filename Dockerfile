@@ -20,6 +20,7 @@ RUN GITINFO=" $(git name-rev --name-only HEAD 2>/dev/null) $(git rev-parse --sho
     echo ${GITINFO}
 
 RUN GITINFO=" $(git name-rev --name-only HEAD 2>/dev/null) $(git rev-parse --short HEAD 2>/dev/null)" &&\
-    echo ${GITINFO} && sed -i -e "/Lada.clientVersion/s/';/${GITINFO}';/" app.js
+    echo ${GITINFO} &&\
+    sed -i -e "/Lada.clientVersion/s/';/${GITINFO}';/" app.js
 
 RUN echo build $(grep Lada.clientVersion app.js)
